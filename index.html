@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Password Stress Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="sheet">
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <header class="sheet-header">
+    <div class="spec-id">SPEC NO. PW&#8209;2026 &middot; REV A</div>
+    <h1>Structural Integrity Report</h1>
+    <p class="subtitle">Password Stress Test &mdash; enter a specimen below to begin loading</p>
+  </header>
+
+  <section class="panel">
+    <div class="panel-label">01 &mdash; Input Specimen</div>
+    <div class="input-row">
+      <input type="password" id="password-input" placeholder="Type a password to test..." autocomplete="off" spellcheck="false">
+      <button type="button" id="toggle-visibility" aria-label="Show password">&#128065;</button>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-label">02 &mdash; Load Capacity</div>
+    <div class="meter-row">
+      <div class="meter-track">
+        <div class="meter-fill" id="meter-fill"></div>
+      </div>
+      <div class="meter-score" id="meter-score">&mdash;</div>
+    </div>
+    <div class="rating" id="rating-text">Awaiting specimen</div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-label">03 &mdash; Test Readout</div>
+    <table class="readout" id="readout-table">
+      <tbody>
+        <tr data-test="length">
+          <td class="t-num">01</td><td class="t-name">Length</td><td class="t-value" id="v-length">&mdash;</td><td class="t-flag" id="f-length">&mdash;</td>
+        </tr>
+        <tr data-test="variety">
+          <td class="t-num">02</td><td class="t-name">Character Variety</td><td class="t-value" id="v-variety">&mdash;</td><td class="t-flag" id="f-variety">&mdash;</td>
+        </tr>
+        <tr data-test="entropy">
+          <td class="t-num">03</td><td class="t-name">Entropy</td><td class="t-value" id="v-entropy">&mdash;</td><td class="t-flag" id="f-entropy">&mdash;</td>
+        </tr>
+        <tr data-test="pattern">
+          <td class="t-num">04</td><td class="t-name">Pattern Scan</td><td class="t-value" id="v-pattern">&mdash;</td><td class="t-flag" id="f-pattern">&mdash;</td>
+        </tr>
+        <tr data-test="known">
+          <td class="t-num">05</td><td class="t-name">Known-Weak Database</td><td class="t-value" id="v-known">&mdash;</td><td class="t-flag" id="f-known">&mdash;</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="panel" id="notes-panel" hidden>
+    <div class="panel-label">Field Notes</div>
+    <ul class="notes-list" id="notes-list"></ul>
+  </section>
+
+  <section class="panel panel-inspection">
+    <div class="panel-label">04 &mdash; Field Inspection (Breach Database)</div>
+    <p class="inspection-desc">
+      Checks this password against the Have I Been Pwned breach database using
+      k-anonymity &mdash; only a 5-character hash prefix ever leaves this page,
+      never the password itself.
+    </p>
+    <button type="button" id="breach-button" disabled>Run Field Inspection</button>
+    <div class="stamp-zone" id="stamp-zone"></div>
+  </section>
+
+  <footer class="sheet-footer">
+    Runs entirely on your own machine. Nothing here is logged or stored.
+  </footer>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
