@@ -4,6 +4,22 @@ A beginner cybersecurity project that scores password strength offline and
 checks for real-world breach exposure online — without ever sending your
 actual password over the network.
 
+## Preview
+
+**Weak password caught immediately** — sequential digits, no variety, and a
+known-common match, all flagged:
+
+![Weak password flagged](screenshots/weak-password.png)
+
+**Strong password passing every check:**
+
+![Strong password passing](screenshots/strong-password.png)
+
+**Breach check in action** — flagged against real breach data via the HIBP
+k-anonymity API:
+
+![Breach check flagged](screenshots/breach-flagged.png)
+
 ## What it does
 
 1. **Strength analysis** — scores a password 0-100 based on:
@@ -78,6 +94,7 @@ password_checker/
 ├── static/
 │   ├── style.css         # Web UI styling
 │   └── script.js         # Live strength check + breach check logic
+├── screenshots/          # Images used in this README
 ├── common_passwords.txt  # 10,000 common/leaked passwords (from SecLists)
 ├── requirements.txt
 └── README.md
